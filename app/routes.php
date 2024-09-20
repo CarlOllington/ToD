@@ -1,10 +1,14 @@
 <?php
 declare(strict_types=1);
 
-use App\Controllers\CoursesAPIController;
+use App\Controllers\completeTasksController as completeTasksController;
+use App\Controllers\deleteTasksController as deleteTasksController;
+use App\Controllers\editTasksController as editTasksController;
+use App\Controllers\getCompletedTasksController as getCompletedTasksController;
+use App\Controllers\getTasksController as getTasksController;
+use App\Controllers\postTasksController as postTasksController;
 use Slim\App;
 use Slim\Views\PhpRenderer;
-use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
     $container = $app->getContainer();
@@ -16,6 +20,16 @@ return function (App $app) {
         return $renderer->render($response, "index.php", $args);
     });
 
-    $app->get('/courses', CoursesAPIController::class);
 
+    $app->get('/tasks[/{id}]', getTasksController::class);
+
+    $app->post('/tasks', postTasksController::class);
+
+    $app->post('/tasks/complete', completeTasksController::class);
+
+    $app->post('/tasks/delete', deleteTasksController::class);
+
+    $app->post('/tasks/edit', editTasksController::class);
+
+    $app->get('/completed', getCompletedTasksController::class);
 };

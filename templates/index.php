@@ -26,8 +26,9 @@
     </style>
 </head>
 <body>
-<h1>Slim</h1>
-<div>a microframework for PHP</div>
-    <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
+<h1>To-Do App</h1>
+<div>Get Shit Done!</div>
+    <p><a href="/tasks">All Tasks</a></p>
+    <p><a href="/completed">Completed Tasks</a></p>
 </body>
 </html>
